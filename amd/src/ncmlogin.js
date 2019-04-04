@@ -1,10 +1,10 @@
 /*
- * @package    theme_ncmboost
- * @copyright  2018 Nicolas Jourdain
+ * @package    theme_ten
+ * @copyright  2019 Nicolas Jourdain
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 /**
- * @module themencmboost
+ * @module themeten
  */
 /* jshint unused:false */
 define(['jquery'], function($) {
