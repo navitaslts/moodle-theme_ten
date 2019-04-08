@@ -32,7 +32,7 @@ if ($ADMIN->fulltree) {
 
     // Each page is a tab - the first is the "General" tab.
     $page = new admin_settingpage('theme_ten_general', get_string('generalsettings', 'theme_ten'));
- 
+
     // Login Page Type Heading.
     $name = 'theme_ten/loginpagetypeheading';
     $title = get_string('loginpagetypeheading', 'theme_ten', null, true);
