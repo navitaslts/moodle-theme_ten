@@ -45,13 +45,14 @@ $THEME->editor_sheets = [];
 // themes. We could add more than one parent here to inherit from multiple parents, and if we did they would be processed in
 // order of importance (later themes overriding earlier ones). Things we will inherit from the parent theme include
 // styles and mustache templates and some (not all) settings.
-$THEME->parents = ['ncmboost'];
+$THEME->parents = ['boost', 'ncmboost'];
 
 // A dock is a way to take blocks out of the page and put them in a persistent floating area on the side of the page. Boost
 // does not support a dock so we won't either - but look at bootstrapbase for an example of a theme with a dock.
 $THEME->enable_dock = false;
 
-$THEME->prescsscallback = 'theme_ncmboost_get_pre_scss';
+// $THEME->prescsscallback = 'theme_ten_get_pre_scss';
+$THEME->prescsscallback = 'theme_ten_get_pre_scss';
 
 // This is an old setting used to load specific CSS for some YUI JS. We don't need it in Boost based themes because Boost
 // provides default styling for the YUI modules that we use. It is not recommended to use this setting anymore.
@@ -71,5 +72,12 @@ $THEME->addblockposition = BLOCK_ADDBLOCK_POSITION_FLATNAV;
 // This is the function that returns the SCSS source for the main file in our theme. We override the boost version because
 // we want to allow presets uploaded to our own theme file area to be selected in the preset list.
 $THEME->scss = function($theme) {
-    return theme_ncmboost_get_main_scss_content($theme);
+    // return theme_ten_get_main_scss_content($theme);
+    // return theme_ncmboost_get_main_scss_content($theme);
+    // We need to load the config for our parent theme because that is where the preset setting is defined.
+    $parentconfig = theme_config::load('ncmboost');
+    // Call a function from our parent themes lib.php file to fetch the content of the themes main SCSS file based on it's own config, not ours.
+    return theme_ncmboost_get_main_scss_content($parentconfig);
+
+
 };

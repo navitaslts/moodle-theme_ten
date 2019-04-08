@@ -43,3 +43,9 @@ $string['samlauthfirst'] = 'SAML Auth First';
 $string['tenlogin'] = 'TEN Login';
 $string['manualauthoff'] = 'Manual Auth OFF';
 $string['manualaccounttitle'] = 'Manual Accounts Only';
+// Privacy.
+$string['privacy:metadata:preference:draweropennav'] = 'The user\'s preference for hiding or showing the drawer menu navigation.';
+$string['privacy:drawernavclosed'] = 'The current preference for the navigation drawer is closed.';
+$string['privacy:drawernavopen'] = 'The current preference for the navigation drawer is open.';
+// We need to include a lang string for each block region.
+$string['region-side-pre'] = 'Right';

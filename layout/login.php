@@ -45,6 +45,6 @@ $PAGE->requires->js_call_amd('theme_ten/ncmlogin', 'init');
 $footnote = get_config('theme_ncmboost', 'footnote');
 if (!empty($footnote)) {
     // Add footnote layout file.
-    require_once(__DIR__ . '/../ncmboost/includes/footnote.php');
+    require_once(__DIR__ . '/../../ncmboost/layout/includes/footnote.php');
 }
 // MODIFICATION END.
