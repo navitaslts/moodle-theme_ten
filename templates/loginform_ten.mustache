@@ -112,25 +112,29 @@
             {{/cansignup}}
 
             <div id="step1">
-                <h4>Welcome to learning.TEN</h4>
-                <p>Please enter your full work email (@navitas.com if possible) address in the field below.</p>
+                <h4>{{#str}}welcometitle, theme_ten{{/str}}</h4>
+                <p>{{#str}}step1-intro, theme_ten{{/str}}</p>
                 <form class="mt-3" method="post" id="form-step1">
                     <div class="form-group">
                         <div class="input-group mb-3">
                             <input type="text" name="username1" id="username1"
                                 class="form-control"
                                 value="{{username}}"
-                                placeholder="Your email address">
+                                placeholder="{{#str}}step1-placeholder, theme_ten{{/str}}">
                             <div class="input-group-append">
-                                <button id="submit-step1" class="btn btn-primary" type="button">NEXT <i class="fa fa-arrow-right" aria-hidden="true"></i></button>
+                                <button id="submit-step1" class="btn btn-primary" type="button">{{#str}}next, theme_ten{{/str}} <i class="fa fa-arrow-right" aria-hidden="true"></i></button>
                             </div>
                         </div>
                     </div>
                 </form>
                 <hr/>
-                <button id="btn-navitas-section" class="btn btn-outline-primary" type="button">NAVITAS Login</button>
-                <button id="btn-manual-section" class="btn btn-outline-info" type="button">Manual Login</button>
-                <button id="btn-help-section" class="btn btn-outline-dark" type="button">HELP</button>
+                <div class="container">
+                    <div class="d-flex justify-content-around">
+                        <button id="btn-navitas-section" class="btn btn-outline-primary btn-sm" type="button">{{#str}}btn-navitas, theme_ten{{/str}}</button>
+                        <button id="btn-manual-section" class="btn btn-outline-info btn-sm" type="button">{{#str}}btn-manual, theme_ten{{/str}}</button>
+                        <button id="btn-help-section" class="btn btn-outline-dark btn-sm" type="button">{{#str}}btn-help, theme_ten{{/str}}</button>
+                    </div>
+                </div>
             </div>
 
             <div id="step2-saml" style="display:none">
@@ -151,31 +155,26 @@
 
             <div id="step2-navitas" style="display:none">
                 <div class="mt-1">
-                    <h4>Welcome to learning.TEN</h4>
-                    <p>Seems like you have entered an email address from one of our partners. You will need to use your @navitas email address</p>
+                    <h4>{{#str}}welcometitle, theme_ten{{/str}}</h4>
+                    <p>{{#str}}step2-navitas-intro, theme_ten{{/str}}</p>
                     <div class="form-group">
                         <div class="input-group mb-3">
                             <input class="form-control" type="text" name="username-navitas" id="username-navitas"
                                 class="form-control"
                                 value="{{username}}"
-                                placeholder="Your Navitas email address">
+                                placeholder="{{#str}}step2-navitas-placeholder, theme_ten{{/str}}">
                             <div class="input-group-append">
-                                <div class="input-group-text">@navitas.com</div>
+                                <button id="submit-step2-navitas" class="btn btn-primary" type="button">{{#str}}next, theme_ten{{/str}} <i class="fa fa-arrow-right" aria-hidden="true"></i></button>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="text-center">
-                    <div class="mt-3">
-                        <button id="submit-step2-navitas" type="button" class="btn btn-primary">NEXT</button>
-                    </div>
                     <div class="mt-2">
-                        <button id="submit-step2-navitas" type="button" class="btn btn-secondary" href="mailto:service.desk@navitas.com?subject=Learning.Ten Login Issue&body=I do not have an Navitas email address!">I don't have an @navitas.com email address</button>
+                        <button id="submit-step2-navitas" type="button" class="btn btn-secondary" href="mailto:service.desk@navitas.com?subject=Learning.Ten Login Issue&body=I do not have an Navitas email address!">{{#str}}step2-navitas-nonavitas, theme_ten{{/str}}</button>
                     </div>
                 </div>
-
             </div>
-
             
             {{#error}}
                 <div class="loginerrors mt-3">
@@ -186,8 +185,8 @@
 
             <div id="step2-manual" style="display:none" class="row justify-content-md-center">
                 <div class="col-md-12">
-                    <h4>Welcome to learning.TEN</h4>
-                    <p>You have been issued with login details via email via Learning and Teaching, please use these login credentials.</p>
+                    <h4>{{#str}}welcometitle, theme_ten{{/str}}</h4>
+                    <p>{{#str}}step2-manual-intro, theme_ten{{/str}}</p>
             
                     <form class="mt-3" action="{{loginurl}}" method="post" id="login">
                         <input id="anchor" type="hidden" name="anchor" value="">
@@ -244,15 +243,15 @@
             </div>
 
             <div id="step-help" style="display:none">
-                <div class="alert alert-warning" role="alert">Looks like we don't recognize your email address or you need some help?</div>
-                    <p>To make sure that you will get your account sorted in time before you course starts, please click the button below and we will get in touch with you.</p>
+                <div class="alert alert-warning" role="alert">{{#str}}step-help-alert, theme_ten{{/str}}</div>
+                    <p>{{#str}}step-help-intro, theme_ten{{/str}}</p>
                     <div class="text-center">
-                        <a class="btn btn-warning btn-lg" target="_blank" href="mailto:service.desk@navitas.com?subject=Learning.Ten Login Issue&body=Hello World!">RAISE SERVICE DESK TICKET</a>
+                        <a class="btn btn-primary btn-lg" target="_blank" href="mailto:service.desk@navitas.com?subject=TEN Moodle Login Issue&body=9.	Please provide information about your problem, what college you work at and your contact details">{{#str}}step-help-btn, theme_ten{{/str}}</a>
                     </div>
                 </div>
 
             <div id="step-restart" class="text-center mt-3" style="display:none">
-                <button id="btn-login-reset" type="button" class="btn btn-dark">START AGAIN</button>
+                <button id="btn-login-reset" type="button" class="btn btn-dark">{{#str}}btn-startagain, theme_ten{{/str}}</button>
             </div>
 
             <div class="card-footer bg-transparent" style="border-top:none">
