@@ -34,8 +34,9 @@ $templatecontext = [
 ];
 
 
-echo $OUTPUT->render_from_template('theme_ten/login', $templatecontext);
-$PAGE->requires->js_call_amd('theme_ten/ncmlogin', 'init');
+// echo $OUTPUT->render_from_template('theme_ten/login', $templatecontext);
+// $PAGE->requires->js_call_amd('theme_ten/ncmlogin', 'init');
+echo $OUTPUT->render_from_template('theme_boost/login', $templatecontext);
 // MOFIFICATION START.
 // Include own layout file for the footnote region.
 // The theme_boost/login template already renders the standard footer.
