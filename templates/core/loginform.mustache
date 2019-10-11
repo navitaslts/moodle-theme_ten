@@ -41,7 +41,6 @@
     * sitename - Name of site.
     * logintoken - Random token to protect login request.
 
-
     Example context (json):
     {
         "autofocusform": false,
@@ -89,49 +88,43 @@
         "cookieshelpiconformatted": "",
         "errorformatted": "",
         "logourl": false,
-        "sitename": "Beer & Chips"
+        "sitename": "Beer & Chips",
         "logintoken": "randomstring"
     }
 }}
 
-<div class="m-y-3 hidden-sm-down"></div>
-
-<div class="row">
-
-    <div class="col-sm-8 col-md-8 col-lg-4 col-xl-3 offset-sm-2 offset-md-2 offset-lg-1 offset-xl-3">
-
-        <div class="card flex-md-row">
-
-            <div class="card-block">
-                <div class="card-title text-xs-center">
-                    {{#logourl}}
-                        <h2><img src="{{logourl}}" title="{{sitename}}" alt="{{sitename}}"/></h2>
-                    {{/logourl}}
-                    {{^logourl}}
-                        <h2>{{sitename}}</h2>
-                    {{/logourl}}
-                    <hr>
+<div class="my-1 my-sm-5"></div>
+<div class="row justify-content-center">
+<div class="col-xl-6 col-sm-8 ">
+<div class="card">
+    <div class="card-block">
+        {{#logourl}}
+            <h2 class="card-header text-center" ><img src="{{logourl}}" title="{{sitename}}" alt="{{sitename}}"/></h2>
+        {{/logourl}}
+        {{^logourl}}
+            <h2 class="card-header text-center">{{sitename}}</h2>
+        {{/logourl}}
+        <div class="card-body">
+            {{#cansignup}}
+                <div class="sr-only">
+                    <a href="{{signupurl}}">{{#str}} tocreatenewaccount {{/str}}</a>
                 </div>
+            {{/cansignup}}
 
-                {{#cansignup}}
-                    <div class="sr-only">
-                        <a href="{{signupurl}}">{{#str}} tocreatenewaccount {{/str}}</a>
-                    </div>
-                {{/cansignup}}
+            {{#error}}
+                <div class="loginerrors mt-3">
+                    <a href="#" id="loginerrormessage" class="accesshide">{{error}}</a>
+                    <div class="alert alert-danger" role="alert">{{error}}</div>
+                </div>
+            {{/error}}
 
-                {{#error}}
-                    <div class="loginerrors m-t-1">
-                        <a href="#" id="loginerrormessage" class="accesshide">{{error}}</a>
-                        <div class="alert alert-danger" role="alert">{{error}}</div>
-                    </div>
-                {{/error}}
-
-                <div class="row justify-content-center">
-                    <div class="col-md-8 col-lg-10 offset-md-2 offset-lg-1">
-                        <form class="m-t-1" action="{{loginurl}}" method="post" id="login">
-                            <input id="anchor" type="hidden" name="anchor" value="">
-                            <script>document.getElementById('anchor').value = location.hash;</script>
-
+            <div class="row justify-content-md-center">
+                <div class="col-md-5">
+                    <form class="mt-3" action="{{loginurl}}" method="post" id="login">
+                        <input id="anchor" type="hidden" name="anchor" value="">
+                        <script>document.getElementById('anchor').value = location.hash;</script>
+                        <input type="hidden" name="logintoken" value="{{logintoken}}">
+                        <div class="form-group">
                             <label for="username" class="sr-only">
                                 {{^canloginbyemail}}
                                     {{#str}} username {{/str}}
@@ -144,37 +137,38 @@
                                 class="form-control"
                                 value="{{username}}"
                                 placeholder={{#quote}}{{^canloginbyemail}}{{#str}}username{{/str}}{{/canloginbyemail}}{{#canloginbyemail}}{{#str}}usernameemail{{/str}}{{/canloginbyemail}}{{/quote}}>
+                        </div>
+                        <div class="form-group">
                             <label for="password" class="sr-only">{{#str}} password {{/str}}</label>
                             <input type="password" name="password" id="password" value=""
                                 class="form-control"
                                 placeholder={{#quote}}{{#str}}password{{/str}}{{/quote}}>
-                            {{! CSRF protection }}
-                            <input type="hidden" name="logintoken" value="{{logintoken}}">
+                        </div>
+                        {{#rememberusername}}
+                            <div class="rememberpass mt-3">
+                                <input type="checkbox" name="rememberusername" id="rememberusername" value="1" {{#username}}checked="checked"{{/username}} />
+                                <label for="rememberusername">{{#str}} rememberusername, admin {{/str}}</label>
+                            </div>
+                        {{/rememberusername}}
 
-                            {{#rememberusername}}
-                                <div class="rememberpass m-t-1 text-center">
-                                    <input type="checkbox" name="rememberusername" id="rememberusername" value="1" {{#username}}checked="checked"{{/username}} />
-                                    <label for="rememberusername">{{#str}} rememberusername, admin {{/str}}</label>
-                                </div>
-                            {{/rememberusername}}
-                            <button type="submit" class="btn btn-primary btn-block m-t-1" id="loginbtn">{{#str}}login{{/str}}</button>
-                        </form>
-                    </div>
+                        <button type="submit" class="btn btn-secondary btn-block mt-3" id="loginbtn">{{#str}}login{{/str}}</button>
+                    </form>
                 </div>
-                <div class="row justify-content-center">
-                    <div class="col-md-8 col-lg-10 offset-md-2 offset-lg-1">
-                        <div class="forgetpass m-t-1">
-                            <p class="text-center"><a href="{{forgotpasswordurl}}">{{#str}}forgotten{{/str}}</a></p>
-                        </div>
 
-                        <div class="m-t-1">
-                            {{#str}} cookiesenabled {{/str}}
-                            {{{cookieshelpiconformatted}}}
-                        </div>
+                <div class="col-md-5">
+                    <div class="forgetpass mt-3">
+                        <p><a href="{{forgotpasswordurl}}">{{#str}}forgotten{{/str}}</a></p>
+                    </div>
+
+                    <div class="mt-3">
+                        {{#str}} cookiesenabled {{/str}}
+                        {{{cookieshelpiconformatted}}}
+                    </div>
                     {{#canloginasguest}}
-                        <div class="m-t-2">
+                        <div class="mt-2">
                             <p>{{#str}}someallowguest{{/str}}</p>
                             <form action="{{loginurl}}" method="post" id="guestlogin">
+                                <input type="hidden" name="logintoken" value="{{logintoken}}">
                                 <input type="hidden" name="username" value="guest" />
                                 <input type="hidden" name="password" value="guest" />
                                 <button class="btn btn-secondary btn-block" type="submit">{{#str}}loginguest{{/str}}</button>
@@ -183,45 +177,50 @@
                     {{/canloginasguest}}
 
                 {{#hasidentityproviders}}
-                        <h6 class="m-t-2">{{#str}} potentialidps, auth {{/str}}</h6>
-                        <div class="potentialidplist" class="m-t-1">
-                            {{#identityproviders}}
-                                <div class="potentialidp">
-                                    <a href="{{url}}" title={{#quote}}{{name}}{{/quote}} class="btn btn-secondary btn-block">
-                                        {{#iconurl}}
-                                            <img src="{{iconurl}}" alt="" width="24" height="24"/>
-                                        {{/iconurl}}
-                                        {{name}}
-                                    </a>
-                                </div>
-                            {{/identityproviders}}
-                        </div>
-                {{/hasidentityproviders}}
+                    <h6 class="mt-2">{{#str}} potentialidps, auth {{/str}}</h6>
+                    <div class="potentialidplist" class="mt-3">
+                        {{#identityproviders}}
+                            <div class="potentialidp">
+                                <a href="{{url}}" title={{#quote}}{{name}}{{/quote}} class="btn btn-primary btn-block">
+                                    {{#iconurl}}
+                                        <img src="{{iconurl}}" alt="" width="24" height="24"/>
+                                    {{/iconurl}}
+                                    {{name}}
+                                </a>
+                            </div>
+                        {{/identityproviders}}
                     </div>
+                {{/hasidentityproviders}}
                 </div>
-            </div>
-        
-        </div>
-    </div>
-
-    <div class="col-sm-8 col-md-8 col-lg-6 col-xl-3 offset-sm-2 offset-md-2 offset-lg-0">
-        <div class="card flex-md-row no-background">
-
-            <div class="card-block">
-            <div class="card-title">
-                <h2>{{#str}}firsttime{{/str}}</h2>
-            </div>
-            <div>
-            {{{instructions}}}
-            {{#cansignup}}
-                <form class="m-t-1" action="{{signupurl}}" method="get" id="signup">
-                    <button type="submit" class="btn btn-secondary">{{#str}}startsignup{{/str}}</button>
-                </form>
-            {{/cansignup}}
             </div>
         </div>
     </div>
 </div>
+</div>
+</div>
+
+
+{{#hasinstructions}}
+<div class="row justify-content-center mt-3">
+<div class="col-xl-6 col-sm-8">
+<div class="card">
+    <div class="card-body">
+        <div class="card-title">
+            <h2>{{#str}}firsttime{{/str}}</h2>
+        </div>
+        <div>
+        {{{instructions}}}
+        {{#cansignup}}
+            <form class="mt-3" action="{{signupurl}}" method="get" id="signup">
+                <button type="submit" class="btn btn-secondary">{{#str}}startsignup{{/str}}</button>
+            </form>
+        {{/cansignup}}
+        </div>
+    </div>
+</div>
+</div>
+</div>
+{{/hasinstructions}}
 
 {{#js}}
     {{#error}}
