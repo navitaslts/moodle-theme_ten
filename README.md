@@ -21,7 +21,7 @@ git clone https://github.com/navitaslts/moodle-theme_ten.git theme/ten
 
 ## Dependencies
 
-This plugin requires NCM Boost Theme plugin (2019032900)
+This plugin requires NCM Boost Theme plugin (https://github.com/navitaslts/moodle-theme_ncmboost)
 ```php
 $plugin->dependencies = [
         'theme_ncmboost' => 2019032900
