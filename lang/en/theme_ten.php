@@ -49,7 +49,7 @@ $string['privacy:drawernavclosed'] = 'The current preference for the navigation 
 $string['privacy:drawernavopen'] = 'The current preference for the navigation drawer is open.';
 // We need to include a lang string for each block region.
 $string['region-side-pre'] = 'Right';
-// Mustache Templates String
+// Mustache Templates String.
 $string['welcometitle'] = 'Welcome to TEN Moodle';
 $string['next'] = 'NEXT';
 $string['btn-startagain'] = 'START AGAIN';
